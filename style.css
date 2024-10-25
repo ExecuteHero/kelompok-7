@@ -171,3 +171,10 @@ a:after {
 a:hover:after {
   width: 50%;
 }
+
+
+@media (min-width:1366px) {
+  html {
+    zoom: 138%;
+  }
+}
