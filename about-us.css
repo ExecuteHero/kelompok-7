@@ -220,7 +220,6 @@ a:hover:after {
 .foto-flex-template {
   margin-top: 10rem;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   padding: 0 10rem;
