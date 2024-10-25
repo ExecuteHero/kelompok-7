@@ -144,7 +144,6 @@ header {
 ul {
   display: flex;
   margin: 10em;
-  padding-right: 3px; 
 }
 
 ul li a {
