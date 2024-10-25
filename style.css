@@ -144,11 +144,11 @@ header {
 ul {
   display: flex;
   margin: 10em;
-  
+  padding-right: 3px; 
 }
 
 ul li a {
-  padding: 30px 33px 30px 30px;
+  padding: 30px;
   text-decoration: none;
   color: black;
   font-family: "Poppins", serif;
