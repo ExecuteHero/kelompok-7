@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cek.css">
+    <title>Cek Brainrot | Tahanan Dachau</title>
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+     <link rel="shortcut icon" href="foto/fist1.png" type="image/x-icon">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+    </style>
+
+</head>
+<body>
+       <header class="header">
+         <nav class="nav container">
+            <div class="nav__data">
+               <img src="foto/Untitled (3) (1).png" alt="" width="150">
+               
+               <div class="nav__toggle" id="nav-toggle">
+                  <i class="ri-menu-line nav__burger"></i>
+                  <i class="ri-close-line nav__close"></i>
+               </div>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                
+
+                  <!--=============== DROPDOWN 1 ===============-->
+                  <li class="dropdown__item">
+    
+              <div class="nav__link nav-link"><a href="about-us.html" >About Us</a> <i class="ri-arrow-down-s-line dropdown__arrow"></i></div>
+    
+              <ul class="dropdown__menu">
+                <li>
+                  <a href="about us/bayu.html" class="dropdown__link">  <i class="ri-user-fill"></i> Bayu </a>
+                </li>
+
+                <li>
+                  <a href="about us/tisztan.html" class="dropdown__link"> <i class="ri-user-fill"></i> Tisztan </a>
+                </li>
+              
+                <li>
+                  <a href="about us/farriz.html" class="dropdown__link"> <i class="ri-user-fill"></i> Farriz </a>
+                </li>
+              
+                <li>
+                  <a href="about us/daffa.html" class="dropdown__link"> <i class="ri-user-fill"></i> Daffa </a>
+                </li>
+                
+                <li>
+                  <a href="about us/haikal.html" class="dropdown__link"> <i class="ri-user-fill"></i> Haikal </a>
+                </li>
+
+                
+                </li>
+              </ul>
+            </li>
+                  
+                  <li><a href="progress-design.html" class="nav__link">Progress</a></li>
+                  
+                  <!--=============== DROPDOWN 2 ===============-->
+                  <li class="dropdown__item">
+                     <div class="nav__link">
+                      Products <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                     </div>
+
+                     <ul class="dropdown__menu">
+                        <li>
+                           <a href="cek.html" class="dropdown__link">
+                              <i class="ri-user-line"></i> Cek Brainrot
+                           </a>                          
+                        </li>
+
+                        <li>
+                           <a href="quiz.html" class="dropdown__link">
+                              <i class="ri-lock-line"></i> Quiz Brainrot
+                           </a>
+                        </li>
+
+                        
+  
+                     </ul>
+                  </li>
+
+               </ul>
+            </div>
+         </nav>
+
+         <!-- js nav -->
+          <script src="js/nav.js"></script>
+
+</header>
+
+     <section>
+   <div class="container-2">
+      <h2>CEK BRAINROT</h2>
+      <p>Masukkan nama Anda untuk melihat brainrot dalam diri:</p>
+      <input type="text" id="nama" placeholder="Nama Anda" class="input">
+      <br>
+      <button onclick="cekKhodam()">Check</button>
+      <p class="error" id="error"></p>
+   </div>
+   
+  </section>
+   
+   <!-- pop up -->
+   
+   <div class="result" id="result">
+      <h3 id="hasilTeks"></h3>
+    <img id="gambarKhodam" src="" alt="Gambar Khodam">
+  </div>
+  
+<script src="js/cek.js"></script>
+
+
+</body>
+</html>
