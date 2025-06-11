@@ -1,0 +1,670 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  background-color: rgb(234, 207, 207);
+}
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+:root {
+  --header-height: 3.5rem;
+  --black-color: hsl(220, 24%, 12%);
+  --black-color-light: hsl(220, 24%, 15%);
+  --black-color-lighten: hsl(220, 20%, 18%);
+  --white-color: #fff;
+  --body-color: hsl(220, 100%, 97%);
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: 0.938rem;
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: antiquewhite;
+}
+
+ul {
+  list-style: none;
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.header {
+  position: relative;
+  /* top: 0;
+  left: 0; */
+  width: 100%;
+  background-color: var(--black-color);
+  box-shadow: 0 2px 16px hsla(220, 32%, 8%, 0.3);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  height: var(--header-height);
+  
+}
+
+.nav__burger,
+.nav__close {
+  color: var(--white-color);
+}
+
+.nav__data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.nav__burger,
+.nav__close {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  inset: 0;
+  margin: auto;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: opacity 0.1s, transform 0.4s;
+}
+
+.nav__close {
+  opacity: 0;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1118px) {
+  .nav__menu {
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    overflow: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+  }
+  .nav__menu::-webkit-scrollbar {
+    width: 0;
+  }
+  .nav__list {
+    background-color: var(--black-color);
+    padding-top: 1rem;
+  }
+}
+
+.nav__link {
+  color: var(--white-color);
+  background-color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.nav__link:hover {
+  background-color: var(--black-color-light);
+}
+
+.show-menu {
+  opacity: 1;
+  top: 3.5rem;
+  pointer-events: initial;
+}
+
+.show-icon .nav__burger {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+.show-icon .nav__close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/*=============== DROPDOWN ===============*/
+.dropdown__item {
+  cursor: pointer;
+}
+
+.dropdown__arrow {
+  font-size: 1.25rem;
+  font-weight: initial;
+  transition: transform 0.4s;
+}
+
+.dropdown__link {
+  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  color: var(--white-color);
+  background-color: var(--black-color-light);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-weight: var(--font-semi-bold);
+  transition: background-color 0.3s;
+}
+
+.dropdown__link i {
+  font-size: 1.25rem;
+  font-weight: initial;
+}
+
+.dropdown__link:hover,
+.dropdown__sublink:hover {
+  background-color: var(--black-color);
+}
+
+.dropdown__menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.dropdown__item:hover .dropdown__menu {
+  max-height: 1000px;
+  transition: max-height 0.4s ease-in;
+}
+
+.dropdown__item:hover .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown__add {
+  margin-left: auto;
+}
+
+.dropdown__sublink {
+  background-color: var(--black-color-lighten);
+}
+
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .nav__link {
+    padding-inline: 1rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1118px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+  .nav__list {
+    height: 100%;
+    display: flex;
+    column-gap: 3rem;
+  }
+  .nav__link {
+    height: 100%;
+    padding: 0;
+    justify-content: initial;
+    column-gap: 0.25rem;
+  }
+  .nav__link:hover {
+    background-color: transparent;
+  }
+
+  .dropdown__item {
+    position: relative;
+  }
+
+  .dropdown__menu {
+    max-height: initial;
+    overflow: initial;
+    position: absolute;
+    left: 0;
+    top: 6rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, top 0.3s;
+  }
+
+  .dropdown__link {
+    padding-inline: 1rem 3.5rem;
+  }
+
+  .dropdown__subitem .dropdown__link {
+    padding-inline: 1rem;
+  }
+
+  .dropdown__submenu {
+    position: absolute;
+    left: 100%;
+    top: 0.5rem;
+  }
+
+  /* Show dropdown menu */
+  .dropdown__item:hover .dropdown__menu {
+    opacity: 1;
+    top: 5.5rem;
+    pointer-events: initial;
+    transition: top 0.3s;
+  }
+}
+   .nav-link > a {
+  color: var(--white-color);
+}
+/* section */
+
+.container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  /* background-color: rgba(0, 0, 0, 4); */
+}
+
+.content1 {
+  text-align: center;
+}
+
+.content1 h1 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 95px;
+  color: white;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+.content1 a {
+  font-family: "Martian Mono";
+  font-weight: 500;
+  font-size: 23px;
+  color: #fff;
+  border: 2px solid white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  transition: 0.33s;
+}
+
+.content1 a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.background-clip {
+  position: absolute;
+  /* right: 0;
+  bottom: 0; */
+  top: 5rem;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .background-clip {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-clip {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.all-content {
+  position: relative;
+  top: 25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.all-content > h1 {
+  font-family: "Anton";
+  font-weight: 400;
+  font-size: 4rem;
+  padding-left: 6rem;
+  color: rgb(18, 18, 18);
+}
+
+.foto-flex-template {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  padding-top: 3rem;
+}
+
+.foto-img {
+  transition: transform 0.3s ease;
+
+}
+
+.foto-img:hover {
+  transform: scale(1.1);
+}
+
+
+.name {
+  font-family: "Anton";
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-right: 3rem;
+}
+
+.name-all {
+  padding-top: 2rem;
+  color: rgb(0, 0, 0);
+}
+
+.name2 {
+  padding-top: 10px;
+}
+
+/* section anomali */
+
+.container-3 {
+  display: flex;
+  margin: 35rem 3rem 0 0;
+  padding-bottom: 3rem;
+  background-color: rgb(40, 37, 37);
+  width: 100%;
+}
+
+.background-clip-2 {
+  width: 45%;
+  margin: 9rem 3rem 8rem 0;
+}
+.content-3 {
+  margin: 9rem 5rem 0 3rem;
+}
+
+.content-3 p {
+  padding: 0.6rem 6rem 0 0;
+  text-align: justify;
+}
+
+.content-3 > h1 {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5em;
+  color: #ffffff;
+}
+
+.content-3 p {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 28px;
+  color: whitesmoke;
+}
+
+.p1 {
+  padding-top: 2rem;
+  padding-bottom: 10px;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 18px;
+  color: azure;
+}
+
+/* section select character */
+
+.container-icon {
+  padding-top: 10rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.text-content {
+ display: flex ;
+ flex-direction: column;
+ align-items: center;
+ padding-left: 10rem;
+}
+
+.text-content > p {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+
+}
+
+.text-content > h2 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 95px;
+  color: rgb(10, 20, 40);
+  font-style: italic;
+  padding: 2rem 0;
+  padding-bottom: 6rem;
+  letter-spacing: 5px;
+}
+
+.content-0 {
+  display: flex;
+  text-align: center;
+  gap: 3rem;
+  cursor: pointer;
+  
+}
+
+
+.category-icon {
+  transition: transform 0.3s ease;
+  max-width: 400px;
+}
+
+.category-icon:hover {
+  transform: scale(1.3);
+}
+
+
+
+.champion-display {
+  text-align: center;
+}
+
+.champion-display img {
+  width: 300px;
+  transition: opacity 0.4s ease-in-out;
+}
+
+
+#champion-image {
+  width: 35rem;
+  top: -7rem;
+  position: relative;
+  background-color: antiquewhite;
+  border-radius: 30rem;
+  right: 8rem;
+}
+
+#champion-text {
+  font-size: 25px;
+  color: #2c2929;
+  position: relative;
+  top: -11rem;
+  right: 8rem;
+  font-weight: bold;
+  font-family: 'Anton';
+  letter-spacing: 2px;
+  padding-bottom: 4rem;
+}
